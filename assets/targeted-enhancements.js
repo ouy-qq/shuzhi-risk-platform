@@ -1,6 +1,9 @@
 (()=>{
   const D=window.RESEARCH_DATA;
   if(!D)return;
+  // Disabled: this legacy enhancer mutates React-owned DOM nodes and causes
+  // the enterprise profile to unmount when a company selection changes.
+  return;
   const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   const pct=v=>(Number(v)*100).toFixed(2)+'%';
   const date=()=>new Date().toLocaleDateString('zh-CN',{year:'numeric',month:'2-digit',day:'2-digit'}).replaceAll('/','-');
